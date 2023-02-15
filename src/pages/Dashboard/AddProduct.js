@@ -1,8 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useAddProductMutation } from "../../feature/api/apiSlice";
 
 const AddProduct = () => {
   const { register, handleSubmit, reset } = useForm();
+
+  const [postProduct, result] = useAddProductMutation()
 
   const submit = (data) => {
     const product = {
@@ -18,7 +21,7 @@ const AddProduct = () => {
       ],
       spec: [],
     };
-
+    postProduct(product)
   };
 
   return (
